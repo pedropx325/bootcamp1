@@ -1,0 +1,16 @@
+# arquivo: dolar_cotacao.py
+
+import requests
+
+def obter_cotacao_dolar():
+    url = "https://economia.awesomeapi.com.br/last/USD-BRL"
+    resposta = requests.get(url)
+    if resposta.status_code == 200:
+        dados = resposta.json()
+        cotacao = float(dados['USDBRL']['bid'])
+        print(f"Cotação atual do dólar: R$ {cotacao:.2f}")
+    else:
+        print("Não foi possível obter a cotação do dólar.")
+
+if __name__ == "__main__":
+    obter_cotacao_dolar()
